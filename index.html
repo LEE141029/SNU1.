@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이용원 - 서울대학교병원</title>
+
+  <style>
+    /* 기본 초기화 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ✅ 헤더 스타일 */
+    header {
+      background-color: #005baa;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ✅ 햄버거 버튼 (모바일용) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: 0.3s ease;
+    }
+
+    /* ✅ 모바일 메뉴 숨기기 */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #005baa;
+      width: 100%;
+    }
+
+    #mobile-menu a {
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ✅ hero 이미지 영역 */
+    .hero {
+      background: url('./imges/그림판 (1).png') no-repeat center/cover;
+      height: 300px;
+      position: relative;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* ✅ 공통 섹션 스타일 */
+    section {
+      padding: 2rem;
+    }
+
+    .departments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .department {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .notice {
+      background: #e6f0ff;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-left: 5px solid #005baa;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* ✅ 반응형 설정 */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      #mobile-menu.show {
+        display: flex;
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .hero {
+        height: 200px;
+      }
+
+      .overlay {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* ✅ 애니메이션 */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 상단 헤더 -->
+  <header>
+    <div class="logo">서울대학교병원</div>
+
+    <!-- ✅ 햄버거 아이콘 (모바일에서만 보임) -->
+    <div class="hamburger" onclick="toggleMenu()" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- ✅ 데스크탑용 메뉴 -->
+    <nav>
+      <a href="#about">병원소개</a>
+      <a href="#departments">진료과</a>
+      <a href="#notice">공지사항</a>
+    </nav>
+  </header>
+
+  <!-- ✅ 모바일 전용 메뉴 -->
+  <div id="mobile-menu">
+    <a href="#about">병원소개</a>
+    <a href="#departments">진료과</a>
+    <a href="#notice">공지사항</a>
+  </div>
+
+  <!-- ✅ 메인 이미지 -->
+  <div class="hero">
+    <div class="overlay">당신의 건강, 우리의 사명</div>
+  </div>
+
+  <!-- ✅ 병원 소개 섹션 -->
+  <section id="about">
+    <h2>병원 소개</h2>
+    <p>
+      서울대학교병원은 최고의 의료진과 최첨단 시설을 갖춘 대한민국 대표 병원입니다.
+      환자 중심의 진료와 세계적 수준의 연구, 교육을 통해 국민 건강 증진에 기여하고 있습니다.
+    </p>
+  </section>
+
+  <!-- ✅ 진료과 섹션 -->
+  <section id="departments">
+    <h2>주요 진료과</h2>
+    <div class="departments">
+      <div class="department">내과</div>
+      <div class="department">외과</div>
+      <div class="department">소아청소년과</div>
+      <div class="department">산부인과</div>
+      <div class="department">정신건강의학과</div>
+      <div class="department">신경과</div>
+    </div>
+  </section>
+
+  <!-- ✅ 공지사항 -->
+  <section id="notice">
+    <h2>공지사항</h2>
+    <div class="notice" onclick="openModal()">
+      [2025-04-17] 코로나19 예방접종 안내 - 클릭하여 자세히 보기
+    </div>
+  </section>
+
+  <!-- ✅ 하단 푸터 -->
+  <footer>
+    서울특별시 종로구 대학로 101 | 대표전화: 1588-5700 | © 2025 서울대학교병원
+  </footer>
+
+  <!-- ✅ 모달창 -->
+  <div id="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); justify-content: center; align-items: center;">
+    <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; text-align: center;">
+      <h3>코로나19 예방접종 안내</h3>
+      <p>2025년 봄철 예방접종이 시작되었습니다. 예약 및 상세 안내는 고객센터로 문의 바랍니다.</p>
+      <button onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript: 메뉴 및 모달 기능 -->
+  <script>
+    // 모바일 메뉴 토글
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('show');
+    }
+
+    // 모달 열기
+    function openModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    // 모달 닫기
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
